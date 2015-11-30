@@ -43,6 +43,9 @@ public class HealthProfileHistory implements Serializable {
 
 	@Column(name="measure_value")
 	private String measureValue;
+	
+	@Column(name="measure_value_type")
+	private String measureValueType;
 
 	@Temporal(TemporalType.DATE)
     @Column(name="timestamp")
@@ -85,6 +88,15 @@ public class HealthProfileHistory implements Serializable {
 	}
 
 	/**
+	 * Get measureValueType
+	 * @return
+	 */
+	@XmlElement(name="valueType")
+	public String getMeasureValueType() {
+		return this.measureValueType;
+	}
+	
+	/**
 	 * Get timestamp
 	 * @return
 	 */
@@ -125,6 +137,14 @@ public class HealthProfileHistory implements Serializable {
 		this.measureValue = measureValue;
 	}
 
+	/**
+	 * Set measureValueType
+	 * @param measureValue
+	 */
+	public void setMeasureValueType(String measureValueType) {
+		this.measureValueType = measureValueType;
+	}
+	
 	/**
 	 * Set timestamp
 	 * @param timestamp

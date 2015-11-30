@@ -12,48 +12,58 @@ import javax.jws.WebService;
     serviceName="PeopleService")
 public class PeopleImpl implements People {
 
+	@Override
+    public List<Person> readPersonList() {
+		System.out.println("---> Reading all Persons");
+
+		List<Person> pList = Person.getAll();
+		System.out.println("---> Found " + pList.size() + " Persons");
+		
+		return pList;
+    }
+
     @Override
-    public Person readPerson(int id) {
+    public Person readPerson(Long id) {
         System.out.println("---> Reading Person by id = "+id);
+
         Person p = Person.getPersonById(id);
-        if (p!=null) {
+        if (p != null) {
             System.out.println("---> Found Person by id = "+id+" => "+p.getFirstname());
         } else {
-            System.out.println("---> Didn't find any Person with  id = "+id);
+            System.out.println("---> Person not found ");
         }
+
         return p;
+    }
+    
+    @Override
+    public Long updatePerson(Person person) {
+    	if (person == null) {
+    		System.out.println("Person is null");
+    	}
+    	person.updatePerson(person);
+        return person.getId();
+    }   
+
+    @Override
+    public Person createPerson(Person person) {
+        return Person.savePerson(person);
+    }
+
+    @Override
+    public boolean deletePerson(Long id) {
+        Person p = Person.getPersonById(id);
+        
+        if (p != null) {
+            Person.deletePerson(p);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 //    @Override
-//    public List<Person> getPeople() {
-//        return Person.getAll();
-//    }
-//
-//    @Override
-//    public int addPerson(Person person) {
-//        Person.savePerson(person);
-//        return person.getId();
-//    }
-
-//    @Override
-//    public int updatePerson(Person person) {
-//        Person.updatePerson(person);
-//        return person.getIdPerson();
-//    }
-
-//    @Override
-//    public int deletePerson(int id) {
-//        Person p = Person.getPersonById(id);
-//        if (p!=null) {
-//            Person.deletePerson(p);
-//            return 0;
-//        } else {
-//            return -1;
-//        }
-//    }
-
-//    @Override
-//    public int updatePersonHP(int id, HealthProfile hp) {
+//    public int updatePersonMeasure(int id, HealthProfile hp) {
 //    	HealthProfile ls = LifeStatus.getLifeStatusById(hp.getIdMeasure());
 //        if (ls.getPerson().getIdPerson() == id) {
 //            LifeStatus.updateLifeStatus(hp);

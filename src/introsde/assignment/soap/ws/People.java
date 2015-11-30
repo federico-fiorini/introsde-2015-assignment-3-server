@@ -13,29 +13,35 @@ import javax.jws.soap.SOAPBinding.Style;
 import javax.jws.soap.SOAPBinding.Use;
 
 @WebService
-@SOAPBinding(style = Style.DOCUMENT, use=Use.LITERAL) //optional
+@SOAPBinding(style = Style.DOCUMENT, use=Use.LITERAL)
 public interface People {
-    @WebMethod(operationName="readPerson")
+    
+	// Method #1
+	@WebMethod(operationName="readPersonList")
+    @WebResult(name="people") 
+    public List<Person> readPersonList();
+	
+	// Method #2
+	@WebMethod(operationName="readPerson")
     @WebResult(name="person") 
-    public Person readPerson(@WebParam(name="id") int id);
+    public Person readPerson(@WebParam(name="id") Long id);
+	
+	// Method #3
+	@WebMethod(operationName="updatePerson")
+    @WebResult(name="id") 
+    public Long updatePerson(@WebParam(name="person") Person person);
 
-//    @WebMethod(operationName="getPeopleList")
-//    @WebResult(name="people") 
-//    public List<Person> getPeople();
+	// Method #4
+    @WebMethod(operationName="createPerson")
+    @WebResult(name="id") 
+    public Person createPerson(@WebParam(name="person") Person person);
 
-//    @WebMethod(operationName="createPerson")
-//    @WebResult(name="personId") 
-//    public int addPerson(@WebParam(name="person") Person person);
+    // Method #5
+    @WebMethod(operationName="deletePerson")
+    @WebResult(name="id") 
+    public boolean deletePerson(@WebParam(name="id") Long id);
 
-//    @WebMethod(operationName="updatePerson")
-//    @WebResult(name="personId") 
-//    public int updatePerson(@WebParam(name="person") Person person);
-
-//    @WebMethod(operationName="deletePerson")
-//    @WebResult(name="personId") 
-//    public int deletePerson(@WebParam(name="personId") int id);
-
-//    @WebMethod(operationName="updatePersonHealthProfile")
-//    @WebResult(name="hpId") 
-//    public int updatePersonHP(@WebParam(name="personId") int id, @WebParam(name="healthProfile") HealthProfile hp);
+//    @WebMethod(operationName="updatePersonMeasure")
+//    @WebResult(name="healthProfileId") 
+//    public int updatePersonMeasure(@WebParam(name="id") Long id, @WebParam(name="healthProfile") HealthProfile hp);
 }

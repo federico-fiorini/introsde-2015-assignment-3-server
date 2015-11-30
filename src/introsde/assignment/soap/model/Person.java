@@ -29,7 +29,7 @@ public class Person implements Serializable {
         pkColumnName="name", valueColumnName="seq",
         pkColumnValue="person")
     @Column(name="id")
-    private int id;
+    private Long id;
 
     @Column(name="firstname")
     private String firstname;
@@ -55,7 +55,7 @@ public class Person implements Serializable {
      * Get person id
      * @return
      */
-    public int getId(){
+    public Long getId(){
         return id;
     }
 
@@ -105,7 +105,7 @@ public class Person implements Serializable {
      * Set id
      * @param id
      */
-    public void setId(int id){
+    public void setId(Long id){
         this.id = id;
     }
 
@@ -162,7 +162,7 @@ public class Person implements Serializable {
      * @param personId
      * @return
      */
-    public static Person getPersonById(int personId) {
+    public static Person getPersonById(Long personId) {
         EntityManager em = LifeStyleDao.instance.createEntityManager();
         Person p = em.find(Person.class, personId);
         if (p != null)

@@ -37,6 +37,9 @@ public class HealthProfile implements Serializable {
 
 	@Column(name="measure_value")
 	private String measureValue;
+	
+	@Column(name="measure_value_type")
+	private String measureValueType;
 
 	@Temporal(TemporalType.DATE)
     @Column(name="timestamp")
@@ -46,7 +49,7 @@ public class HealthProfile implements Serializable {
 	 * Get id
 	 * @return
 	 */
-	@XmlTransient
+	@XmlElement(name="mid")
 	public int getId() {
 		return this.id;
 	}
@@ -76,6 +79,15 @@ public class HealthProfile implements Serializable {
 	@XmlElement(name="value")
 	public String getMeasureValue() {
 		return this.measureValue;
+	}
+	
+	/**
+	 * Get measureValueType
+	 * @return
+	 */
+	@XmlElement(name="valueType")
+	public String getMeasureValueType() {
+		return this.measureValueType;
 	}
 
 	/**
@@ -117,6 +129,14 @@ public class HealthProfile implements Serializable {
 	 */
 	public void setMeasureValue(String measureValue) {
 		this.measureValue = measureValue;
+	}
+	
+	/**
+	 * Set measureValueType
+	 * @param measureValue
+	 */
+	public void setMeasureValueType(String measureValueType) {
+		this.measureValueType = measureValueType;
 	}
 
 	/**
