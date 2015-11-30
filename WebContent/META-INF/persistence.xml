@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="lifestyle-jpa">
+
+        <class>introsde.assignment.soap.model.Person</class>
+        <class>introsde.assignment.soap.model.HealthProfile</class>  
+        <class>introsde.assignment.soap.model.HealthProfileHistory</class>        
+        <class>introsde.assignment.soap.model.MeasureType</class>
+
+        <properties>
+            <property name="hibernate.archive.autodetection" value="class, hbm"/>
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:lifestyle.sqlite" />
+            <property name="eclipselink.logging.level" value="INFO" />
+        </properties>
+
+    </persistence-unit>
+</persistence>
