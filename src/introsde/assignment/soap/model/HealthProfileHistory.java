@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="health_profile_history") 
-@XmlRootElement(name="measure")
 @NamedQueries({
 	@NamedQuery(name="HealthProfileHistory.findByPersonAndType",
 			query="SELECT h FROM HealthProfileHistory h "

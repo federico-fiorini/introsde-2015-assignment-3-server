@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="health_profile") 
-@XmlRootElement(name="measure")
 @NamedQuery(name="HealthProfile.findByPersonAndType",
 			query="SELECT h FROM HealthProfile h "
 				+ "WHERE h.person = :person AND h.measureType = :measureType")
@@ -44,7 +43,7 @@ public class HealthProfile implements Serializable {
 	@Temporal(TemporalType.DATE)
     @Column(name="timestamp")
     private Date timestamp; 
-
+	
 	/**
 	 * Get id
 	 * @return

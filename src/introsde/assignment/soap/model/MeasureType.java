@@ -13,7 +13,6 @@ import introsde.assignment.soap.dao.LifeStyleDao;
 @Entity
 @Table(name="measure_type") 
 @NamedQuery(name="MeasureType.findAll", query="SELECT m FROM MeasureType m")
-@XmlRootElement(name="measureType")
 public class MeasureType implements Serializable {
 
 	private static final long serialVersionUID = 4L;
