@@ -26,7 +26,7 @@ public class HealthProfile implements Serializable {
 	    pkColumnName="name", valueColumnName="seq",
 	    pkColumnValue="health_profile")
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name="person_id", referencedColumnName="id")
@@ -50,7 +50,7 @@ public class HealthProfile implements Serializable {
 	 * @return
 	 */
 	@XmlElement(name="mid")
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
@@ -103,7 +103,7 @@ public class HealthProfile implements Serializable {
 	 * Set id
 	 * @param id
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -176,7 +176,7 @@ public class HealthProfile implements Serializable {
      * @param h
      * @return
      */
-    public static HealthProfile updateHealthProfile(Integer currentId, HealthProfile newMeasure) {
+    public static HealthProfile updateHealthProfile(Long currentId, HealthProfile newMeasure) {
 
     	// Get current timestamp
     	java.util.Date date = new java.util.Date();
@@ -194,7 +194,7 @@ public class HealthProfile implements Serializable {
 
     	} else { // Update current measure
     		
-    		HealthProfile healthProfile = em.find(HealthProfile.class, (int) currentId);
+    		HealthProfile healthProfile = em.find(HealthProfile.class, currentId);
             tx.begin();
             healthProfile.setMeasureValue(newMeasure.getMeasureValue());
             healthProfile.setCreated(date);

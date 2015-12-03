@@ -32,7 +32,7 @@ public class HealthProfileHistory implements Serializable {
 	    pkColumnName="name", valueColumnName="seq",
 	    pkColumnValue="health_profile_history")
 	@Column(name = "id")
-	private int id;
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name="person_id", referencedColumnName="id")
@@ -56,7 +56,7 @@ public class HealthProfileHistory implements Serializable {
 	 * @return
 	 */
 	@XmlElement(name="mid")
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
@@ -73,7 +73,7 @@ public class HealthProfileHistory implements Serializable {
 	 * Get measureType
 	 * @return
 	 */
-	@XmlTransient
+	@XmlElement(name="type")
 	public String getMeasureType() {
 		return this.measureType;
 	}
@@ -109,7 +109,7 @@ public class HealthProfileHistory implements Serializable {
 	 * Set id
 	 * @param id
 	 */
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -176,7 +176,7 @@ public class HealthProfileHistory implements Serializable {
      * Find history by person id and measure type
      * @return
      */
-    public static HealthProfileHistory getMeasureById(Person p, String measureType, int mid) {
+    public static HealthProfileHistory getMeasureById(Person p, String measureType, Long mid) {
         EntityManager em = LifeStyleDao.instance.createEntityManager();
 
         HealthProfileHistory measure = new HealthProfileHistory();
@@ -222,5 +222,17 @@ public class HealthProfileHistory implements Serializable {
         LifeStyleDao.instance.closeConnections(em);
         
         return h;
+    }
+    
+    public static HealthProfileHistory updateHealthProfileHistory(HealthProfileHistory healthProfile) {
+		// Persist object
+		EntityManager em = LifeStyleDao.instance.createEntityManager(); 
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        healthProfile = em.merge(healthProfile);
+        tx.commit();
+        LifeStyleDao.instance.closeConnections(em);
+        
+        return healthProfile;
     }
 }
