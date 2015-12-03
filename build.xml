@@ -102,18 +102,4 @@
             </java>
         </target>
     	
-    	<target name="execute.client" depends="install">
-    	            <echo message="ant execute client introsde.assignment.soap.client.PeopleClient in ${build.dir}" />
-    	            <java classname="introsde.assignment.soap.client.PeopleClient" classpath="${build.dir}" fork="true">
-    	                <arg value="$JAVA_OPTS  -cp" />
-    	                <classpath>
-    	                    <path location="build" />
-    	                    <fileset dir="WebContent/WEB-INF/lib">
-    	                        <include name="**/*.jar" />
-    	                        <include name="*.jar" />
-    	                    </fileset>
-    	                </classpath>
-    	            </java>
-    	        </target>
-    	
     </project>
