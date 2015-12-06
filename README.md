@@ -33,7 +33,7 @@ Main packages:
 
 
 ######Deployed on heroku server:
-	https://warm-brook-6204.herokuapp.com/ws/people
+	[https://warm-brook-6204.herokuapp.com/ws/people](https://warm-brook-6204.herokuapp.com/ws/people)
 
 ######Client part on github:
-	https://github.com/federico-fiorini/introsde-2015-assignment-3-client
+	[https://github.com/federico-fiorini/introsde-2015-assignment-3-client](https://github.com/federico-fiorini/introsde-2015-assignment-3-client)
